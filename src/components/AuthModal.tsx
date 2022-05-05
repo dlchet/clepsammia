@@ -1,7 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Auth } from "@supabase/ui";
 import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { IoIosClose, IoIosCloud } from "react-icons/io";
 import { anonSupabaseClient } from "../lib/initSupabase";
 
@@ -12,18 +11,9 @@ const AuthModal = ({
   show: boolean;
   onClose?: () => void;
 }) => {
-  const [showSignIn, setShowSignIn] = useState(false);
-
   const closeModal = () => {
     if (typeof onClose === "function") onClose();
   };
-
-  useEffect(() => {
-    if (!show)
-      setTimeout(() => {
-        setShowSignIn(false);
-      }, 200);
-  }, [show]);
 
   return (
     <Transition appear show={show} as={Fragment}>
@@ -77,17 +67,11 @@ const AuthModal = ({
                       </a>
                     </Link>
                   </div>
-                  <Dialog.Title
-                    as="h3"
-                    className="mt-6 font-bold text-lg sm:text-2xl text-center"
-                  >
-                    {showSignIn ? "welcome back!" : "create your account"}
-                  </Dialog.Title>
-                  <Auth
+                  {/* <Auth
                     supabaseClient={anonSupabaseClient}
                     providers={[]}
                     view="sign_in"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

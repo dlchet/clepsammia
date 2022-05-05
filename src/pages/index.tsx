@@ -1,11 +1,6 @@
-import { Auth } from "@supabase/ui";
 import { NextPage } from "next";
-import { anonSupabaseClient } from "../lib/initSupabase";
 
 const Home: NextPage<{}> = (_) => {
-  const client = anonSupabaseClient;
-  const { user, session } = Auth.useUser();
-
   return (
     <div className="border border-red-500 border-4 p-3 flex lg:flex-row flex-col h-screen dark:bg-slate-900 dark:text-white">
       <div className="flex-col border-red-500 border-2">
